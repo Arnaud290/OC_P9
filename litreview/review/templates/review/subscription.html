@@ -3,39 +3,37 @@
     Abonnements
 {% endblock %}
 {% block header_page %}
-    <div class=header_page>
-        <span class=header_page__title>Abonnements</span>
+    <div class="header_page">
+        <span class="header_page__title">Abonnements</span>
     </div> 
 {% endblock %}
 {% block content %}
     <div class="subscription_body">
-        <span class=subscription_body__title>Suivre d'autres utilisateurs</span>
+        <p class="subscription_body__title">Suivre d'autres utilisateurs</p>
         <form method="post" action="" class="subscription_body__form">
             {% csrf_token %}
             {{ form.username }}
-            <div class=subscription_body__form__validate>
+            <div class="subscription_body__form__validate">
                 <button type="submit" class="btn">Envoyer</button>
                 {{ form.username.errors }}
             </div>   
         </form>
-        <span class=subscription_body__title>Abonnements</span>
-      
+        <p class="subscription_body__title">Abonnements</p>
         {% for users in followed %}
             {% if users.content_type == 'FOLLOWED_USER' %}
-                <div class=subscription_body__followed_users>
-                    <span class=subscription_body__followed_users__name>{{users.followed_user}}</span>
+                <div class="subscription_body__followed_users">
+                    <span class="subscription_body__followed_users__name">{{users.followed_user}}</span>
                     <a href= "{% url 'unsubscribe_user' id_user=users.pk %}">
                         <button class="btn subscription_body__followed_users__button">se désinscrire</button>
                     </a>
                 </div>    
             {% endif %}
         {% endfor %}
-        <span class=subscription_body__title>Abonnés</span>
+        <p class="subscription_body__title">Abonnés</p>
         {% for users in followed %}
             {% if users.content_type == 'FOLLOWED_BY' %}
-                <span class=subscription_body__followed_by>{{users.user}}</span>
+                <span class="subscription_body__followed_by">{{users.user}}</span>
             {% endif %}    
         {% endfor %}
     </div>
-      
 {% endblock %}

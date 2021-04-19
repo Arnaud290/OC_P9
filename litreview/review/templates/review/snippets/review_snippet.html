@@ -25,8 +25,7 @@
                             <span class="star">&#9733;</span>
                         {% endif %}
                     {% endfor %}
-            </span>         
-
+                </span>         
             </span>
             <span class=snippet_body__body>
                 {{post.body}}
@@ -39,16 +38,13 @@
                     <a href="{% url 'review' id_ticket=post.ticket.id %}">
                         <button type="button" class="btn">Modifier</button>
                     </a>
-                        
                     <a href="{% url 'delete_review' id_review=post.id %}">
                         <button type="button" class="btn">Supprimer</button>
                     </a>         
                 {% endif %}
             </span>       
+        </div>
     </div>
- 
-    
- 
 {% endblock %}
 
 

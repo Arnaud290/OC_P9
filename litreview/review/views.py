@@ -76,15 +76,19 @@ def ticket(request, id_ticket=None):
         if request.method == 'POST':
             ticket_form = service_save_ticket(
                 request, instance_ticket)
-            if id_ticket is not None:
-                return redirect('posts')
+            if ticket_form.is_valid():
+                if id_ticket is not None:
+                    return redirect('posts')
+                else:
+                    return redirect('feed')
             else:
-                return redirect('feed')
+                error = 'Lien URL non valide'
         else:
+            error = False
             ticket_form = TicketForm(instance=instance_ticket)
-            return render(
-                request, "review/ticket.html",
-                {'ticket_form': ticket_form})
+        return render(
+            request, "review/ticket.html",
+            {'ticket_form': ticket_form, 'error': error})
     else:
         return redirect('userlogin')
 
@@ -128,6 +132,8 @@ def review(request, id_ticket=None):
             review=True)
         if instance_review is False:
             return redirect('feed')
+        ticket_form = TicketForm(instance=instance_ticket)
+        review_form = ReviewForm(instance=instance_review)
         if request.method == 'POST':
             if id_ticket is not None:
                 review_form = service_save_review(
@@ -144,16 +150,18 @@ def review(request, id_ticket=None):
                     instance_ticket=instance_ticket,
                     instance_review=instance_review,
                     review=True)
-                return redirect('feed')
+                if ticket_form.is_valid():
+                    return redirect('feed')
+                else:
+                    error = 'Lien URL non valide'
         else:
-            ticket_form = TicketForm(instance=instance_ticket)
-            review_form = ReviewForm(instance=instance_review)
-            context = {
-                'ticket_form': ticket_form,
-                'review_form': review_form}
-            return render(
-                request, "review/review.html",
-                context)
+            error = False
+        context = {
+            'ticket_form': ticket_form,
+            'review_form': review_form,
+            'error': error}
+        return render(
+            request, "review/review.html", context)
     else:
         return redirect('userlogin')
 
@@ -169,7 +177,7 @@ def delete_review(request, id_review):
 
 def posts(request):
     if request.user.is_authenticated:
-        context = {'posts': service_posts(request)}
+        context = {'posts': service_posts(request), 'n': range(5)}
         return render(
             request, "review/posts.html",
             context)

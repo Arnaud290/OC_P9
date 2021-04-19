@@ -1,3 +1,6 @@
+"""
+Services for views
+"""
 from .models import UserFollows
 from .models import Ticket
 from .models import Review
@@ -17,6 +20,10 @@ from .forms import SubsriptionForm
 
 
 def service_ticket_review(id_ticket=None):
+    """
+    Function creating a list containing all reviews objects
+    or review object of a ticket
+    """
     ticket_review = [
         review.ticket for review in Review.objects.all()]
     if id_ticket:
@@ -28,6 +35,10 @@ def service_ticket_review(id_ticket=None):
 
 
 def service_login_registration(request, registration=False):
+    """
+    Fonction of creating a user account
+    or connecting an account
+    """
     if registration:
         form = RegistrationForm(request.POST)
     else:
@@ -46,15 +57,18 @@ def service_login_registration(request, registration=False):
 
 
 def service_posts(request, followers=False):
+    """
+    Post list creation function
+    """
     users = []
     for user in UserFollows.objects.filter(user=request.user):
         users.append(user.followed_user)
     users.append(request.user)
     if followers:
-        ticket = Ticket.objects.filter(user__in=users)    
+        ticket = Ticket.objects.filter(user__in=users)
         review = Review.objects.filter(
             Q(ticket__in=ticket) | Q(user__in=users))
-   
+
     else:
         ticket = Ticket.objects.filter(user=request.user)
         review = Review.objects.filter(user=request.user)
@@ -67,6 +81,9 @@ def service_posts(request, followers=False):
 
 
 def service_followed_users(request):
+    """
+    Function that returns the list of followed users
+    """
     followed = []
     followed_users_list = UserFollows.objects.filter(
         user=request.user)
@@ -84,6 +101,9 @@ def service_followed_users(request):
 
 
 def service_save_review(request, instance_ticket, instance_review):
+    """
+    Save review function
+    """
     review_form = ReviewForm(request.POST, instance=instance_review)
     if review_form.is_valid():
         review = review_form.save(commit=False)
@@ -97,6 +117,9 @@ def service_save_ticket(request,
                         instance_ticket,
                         instance_review=None,
                         review=False):
+    """
+    Save ticket function
+    """
     ticket_form = TicketForm(request.POST, instance=instance_ticket)
     if ticket_form.is_valid():
         ticket = ticket_form.save(commit=False)
@@ -108,6 +131,9 @@ def service_save_ticket(request,
 
 
 def service_delete(request, model, id_model):
+    """
+    Object deletion function
+    """
     delete_model = get_object_or_404(model, pk=id_model)
     if delete_model.user == request.user:
         delete_model.delete()
@@ -116,6 +142,9 @@ def service_delete(request, model, id_model):
 
 
 def service_get_instance(request, model, id_model, review=False):
+    """
+    Function for retrieving an instance of an object
+    """
     if id_model is not None:
         if model == Review:
             try:
@@ -134,6 +163,9 @@ def service_get_instance(request, model, id_model, review=False):
 
 
 def service_subscription(request):
+    """
+    Add user follow-up function
+    """
     form = SubsriptionForm(request.POST)
     if form.is_valid():
         user = form.cleaned_data['username']
@@ -151,6 +183,9 @@ def service_subscription(request):
 
 
 def service_unsubscribe_user(request, id_user):
+    """
+    Follow-up user deletion function
+    """
     followed_user = get_object_or_404(UserFollows, pk=id_user)
     if followed_user.user == request.user:
         followed_user.delete()

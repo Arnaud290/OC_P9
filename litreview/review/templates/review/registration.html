@@ -1,14 +1,14 @@
 {% extends 'review/base.html' %}
 {% block title %}
-Inscription
+    Inscription
 {% endblock %}
 {% block header_page %}
-    <div class=header_page__registration>
-        <span class=header_page__title>Inscription</span>
+    <div class="header_page__registration">
+        <span class="header_page__title">Inscription</span>
     </div>  
 {% endblock %}
 {% block content %}
-    <div class=registration_block>
+    <div class="registration_block">
         <p class="registration_block__form title">Inscrivez-vous</p>  
         <form method="post" action="" class="registration_block__form">
             {% csrf_token %}

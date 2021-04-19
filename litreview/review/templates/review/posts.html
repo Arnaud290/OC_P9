@@ -3,8 +3,8 @@
     Posts
 {% endblock %}
 {% block header_page %}
-<div class=header_page>
-    <span class=header_page__title>Posts</span>
+<div class="header_page">
+    <span class="header_page__title">Posts</span>
 </div>   
 {% endblock %}
 {% block content %}
@@ -18,6 +18,5 @@
             {% include 'review/snippets/review_snippet.html' with post_edit=True %}
         </div>
     {% endif %}
-    <br><br>
     {% endfor %}
 {% endblock %}

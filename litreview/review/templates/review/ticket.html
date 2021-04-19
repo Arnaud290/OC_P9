@@ -1,27 +1,30 @@
 {% extends 'review/base.html' %}
 {% block title %}
-Ticket
+    Ticket
 {% endblock %}
 {% block header_page %}
-<div class=header_page>
-    <span class=header_page__title>Ticket</span>
-</div>  
+    <div class="header_page">
+        <span class="header_page__title">Ticket</span>
+    </div>  
 {% endblock %}
 {% block content %}
-    <div class=ticket_body>
+    <div class="ticket_body">
         {% if not ticket_form.instance.id  %}
             <form method="post" action="{% url 'ticket' %}" class="ticket_body__form">
         {% else %}  
             <form method="post" action="{% url 'ticket' id_ticket=ticket_form.instance.id %}" class="ticket_body__form">   
         {% endif %} 
                 {% csrf_token %}
-            <span class=ticket_body__form__title>Titre</span>
-            {{ ticket_form.title }}
-            <span class=ticket_body__form__title>Description</span>
-            {{ ticket_form.description }}
-            <span class=ticket_body__form__title>Image</span>
-            {{ ticket_form.image }}
-                <div class=ticket_body__form__validate>
+                <p class="ticket_body__form__title">Titre</p>
+                {{ ticket_form.title }}
+                <p class="ticket_body__form__title">Description</p>
+                {{ ticket_form.description }}
+                <p class="ticket_body__form__title">Image</p>
+                {{ ticket_form.image }}
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+                <div class="ticket_body__form__validate">
                     <button type="submit" class="btn">Envoyer</button>
                 </div>
             </form>

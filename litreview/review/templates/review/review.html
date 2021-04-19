@@ -3,14 +3,13 @@
 review
 {% endblock %}
 {% block header_page %}
-<div class=header_page>
-    <span class=header_page__title>Review</span>
+<div class="header_page">
+    <span class="header_page__title">Review</span>
 </div>  
 {% endblock %}
 {% block content %}
-    <div class=review_body>
-
-        <span class=review_body__title>Ticket</span>
+    <div class="review_body">
+        <p class="review_body__title">Ticket</p>
         {% if ticket_form.instance.id %}
             <p>Vous étes en train de poster en réponse à</p>
                 {% include 'review/snippets/ticket_snippet.html' with post=ticket_form.instance %}
@@ -18,31 +17,27 @@ review
         {% else %} 
             <form method="post" action="{% url 'review' %}" class="review_body__form"> 
                 {% csrf_token %}
-                <span class=review_body__form__title>Titre</span>
+                <p class="review_body__form__title">Titre</p>
                 {{ ticket_form.title }}
-                <span class=review_body__form__title>Description</span>
+                <p class="review_body__form__title">Description</p>
                 {{ ticket_form.description }}
-                <span class=review_body__form__title>Image</span>
+                <p class="review_body__form__title">Image</p>
                 {{ ticket_form.image }}
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
         {% endif %}
-                <span class=review_body__title>Critique</span>
-                {% csrf_token %}
-                <span class=review_body__form__title>Titre</span>
-                {{ review_form.headline }}
-                <span class=review_body__form__title>Commentaires</span>
-                {{ review_form.body }}
-                <span class=review_body__form__title>Note</span>
-                {{ review_form.rating }}
-
-                <div class=form-control-validate>
-                    <button type="submit" class="btn">Envoyer</button>
-                </div>
-                <div class=review_body__form__validate>
-                    <button type="submit" class="btn">Envoyer</button>
-                </div>
-            </form> 
-
+            <p class="review_body__title">Critique</p>
+            {% csrf_token %}
+            <p class="review_body__form__title">Titre</p>
+            {{ review_form.headline }}
+            <p class="review_body__form__title">Commentaires</p>
+            {{ review_form.body }}
+            <p class="review_body__form__title">Note</p>
+            {{ review_form.rating }}
+            <div class="review_body__form__validate">
+                <button type="submit" class="btn">Envoyer</button>
+            </div>
+        </form> 
     </div>            
 {% endblock %}
-
-
