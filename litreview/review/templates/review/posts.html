@@ -1,0 +1,23 @@
+{% extends 'review/base.html' %}
+{% block title %}
+    Posts
+{% endblock %}
+{% block header_page %}
+<div class=header_page>
+    <span class=header_page__title>Posts</span>
+</div>   
+{% endblock %}
+{% block content %}
+    {% for post in posts %}
+    {% if post.content_type == 'TICKET'  %}
+        <div class="post post-ticket">
+            {% include 'review/snippets/ticket_snippet.html' with post_edit=True %}
+        </div>    
+    {% elif post.content_type == 'REVIEW' %}
+        <div class="post post-review">
+            {% include 'review/snippets/review_snippet.html' with post_edit=True %}
+        </div>
+    {% endif %}
+    <br><br>
+    {% endfor %}
+{% endblock %}

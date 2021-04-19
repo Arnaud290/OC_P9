@@ -1,0 +1,6 @@
+[flake8]
+format = html 
+htmldir = flake-report
+exclude = env
+ignore = E501, E228 litreview/litreview/litreview/settings_exemple.py litreview/litreview/litreview/settings.py litreview/review/setting.py
+

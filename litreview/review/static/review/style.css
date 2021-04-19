@@ -1,0 +1,590 @@
+/* General */
+
+body{
+    background-color: rgb(214, 212, 212);
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(214, 216, 209);
+    height: 150px; 
+    align-items: center;
+    width: 100%;
+    position : fixed;
+    top:0%;
+}
+
+.header__logo{
+    display: flex;
+    align-items: center;
+    width: 30%;
+
+}
+.header__logo__image{
+    width: 155px;
+	height: 150px;
+}
+
+.header__logo__title{
+    margin-left: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 5em;
+    text-align: center;
+    width: 30%
+}
+
+.header_page{
+    width: 30%
+}
+
+.header__nav{
+    text-decoration: none;
+    color: #000000;
+    width: 30%
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.errorlist li{
+    color: red;
+    list-style-type: none;  
+}
+
+.header__nav__list{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header__nav__list a{
+    margin-right: 10px;
+}
+
+.header__nav__list ul{
+    display: flex;
+    color: #181818;
+    
+}   
+
+.header__nav__list li{
+    list-style-type: none;    
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.header__nav__list a:hover
+{
+    color: #ffffff
+}
+
+.header_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.header_page__title{
+    color: rgb(253, 253, 253);
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    width: 100%
+}
+
+
+.post{
+    margin-top: 10px;    
+}
+
+.title{
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+
+.btn{
+    background-color: rgb(172, 173, 167);
+}
+
+.btn:hover{
+    background-color: #ffffff
+}
+
+.header__block{
+    margin-top: 180px;
+}
+
+/* login */
+
+.login-block{
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+}
+
+.login-block__form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-block__registration{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-block__form__control-text{
+    height:30px;
+    width: 400px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.login-block__form__control.validate{
+    margin-top: 10px;
+}
+
+.login-block .btn{
+    height:30px;
+    width: 300px;
+    font-size: 1em;
+}
+
+.login-registration_block .btn{
+    height:30px;
+    width: 300px;
+    font-size: 1em;
+}
+
+/* Registration */
+.registration_block{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.registration_block__form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registration_block__form__control-text{
+    height:30px;
+    width: 400px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+.registration_block__form__control.validate{
+    margin-top: 10px; 
+}
+
+.registration_block__form__control__button{
+    display: flex;
+    margin-top: 30px;
+    justify-content: flex-end;
+}
+
+.registration_block__form__control__button .btn{
+    height:30px;
+    width: 170px;
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+/* Feed */
+
+.header_page__feed{
+    display: flex;
+    flex-direction: column;
+}
+
+.header_page__title__feed__button{
+    width: 450px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_page__title__feed__button .btn{
+    height:30px;
+    width: 200px;
+    font-size: 1em;
+}
+
+.block_feed__posts{
+    width:100%;
+    margin-top: 30px;
+}
+
+/* ticket */
+
+.ticket_body{
+    display: block;
+    background-color: rgb(241, 238, 238);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1mm solid rgba(27, 25, 27, 0.6);
+    width: 90%
+}
+
+.ticket_body__form{
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket_body__form__title{
+    color:rgb(47, 40, 37);
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.ticket_body__form__form{
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.ticket_body__form__validate{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height:40px;
+    
+}
+.ticket_body__form__validate .btn{
+    margin-right: 20px;
+    height:30px;
+    width: 170px;
+}
+
+/* Review */
+
+.review_body{
+    display: block;
+    background-color: rgb(241, 238, 238);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1mm solid rgba(27, 25, 27, 0.6);
+    width: 90%;
+}
+
+.review_body__title{
+    color:rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.review_body__form__title{
+    color:rgb(47, 40, 37);
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.review_body__form__form{
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+
+.review_body__form{
+    display: flex;
+    flex-direction: column;
+}
+
+.review_body__form__validate{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height:40px;
+    
+}
+.review_body__form__validate .btn{
+    margin-right: 20px;
+    height:30px;
+    width: 170px;
+}
+
+.review_body__form__form_radio{
+    display: flex;
+    width: 90%;
+    list-style-type: none;  
+    justify-content: space-around;
+}
+
+/* subscription */
+
+.subscription_body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(241, 238, 238);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1mm solid rgba(27, 25, 27, 0.6);
+    width: 90%;
+}
+
+.subscription_body__title{
+    color:rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.subscription_body__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.subscription_body__form__form{
+    height:30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 90%;
+}
+
+.subscription_body__form__validate{
+    margin-top: 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height:40px;
+}
+.subscription_body__form__validate .btn{
+    height:30px;
+    width: 100px;
+}
+
+.subscription_body__followed_users{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.subscription_body__followed_users__name{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    height:30px;
+    font-size: 1.3em;
+}
+
+.subscription_body__followed_users .btn{
+    width: 10%;
+    margin-left: 10px;
+    height:30px;
+    width: 150px;
+}
+
+.subscription_body__followed_by{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    height:30px;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+
+}
+
+/* general snippets */
+
+.snippet_header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.snippet_body{
+    display: flex;
+    flex-direction: column;
+}
+
+.snippet_body__button{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height:60px;
+}
+
+.snippet_body__button .btn{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    height:30px;
+    width: 170px;
+} 
+
+/* Snippets ticket */
+
+.block_snippet_ticket{
+    display: block;
+    background-color: rgb(241, 238, 238);
+    margin-left: auto;
+    margin-right: auto;
+    border: 1mm solid rgba(27, 25, 27, 0.6);
+    width: 90%
+}
+
+.snippet_body__title{
+    color:rgb(47, 40, 37);
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.snippet_body__description{
+    color:rgb(0, 0, 0);
+    font-size: 1.1em;
+}
+
+.snippet_ticket_body__title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.snippet_body__description{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.snippet_body__image{
+    width: 250px;
+	height: 300px;
+    border: 1px solid black;
+}
+
+/* snippets review */
+.block_snippet_review{
+    display: block;
+    background-color: rgb(244, 253, 192);
+    margin: auto;
+    border: 1mm solid rgba(27, 25, 27, 0.6);
+    width: 90%
+}
+
+.snippet_body__headline{
+    display: flex;
+    color:rgb(47, 40, 37);
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.snippet_body__headline__rating_stars{
+    margin-left: 2px;
+    display: flex;
+}
+
+.snippet_body__headline__rating_stars .star{
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size:0.9em;
+}
+
+.snippet_body__body{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 1280px){
+
+    /* general */
+    .header__logo{
+        margin-left: 10px;
+    }
+    
+    .header__logo__image{
+        width: 65px;
+        height: 60px;
+    }
+    
+    .header__logo__title{
+        font-size: 3em; 
+    }
+
+    .title{
+        font-size: 1.3em;
+        width: 100%;
+    }
+
+    .header_page__title{  
+        font-size: 2em;
+    }
+    .header__nav__list{
+        
+        justify-content: flex-start;
+    }
+    .header__nav__list{
+        display: flex;
+        flex-direction: column;
+        }   
+
+    /* login */
+    .login-block{
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-block__form .login-block__registration{
+        width: 100%;
+        display: flex;
+    
+    }
+
+    /* feed */
+    .header_page.feed{
+        height:150px;
+    }
+
+    .header_page__title__feed__button{
+        align-items: center;
+        flex-direction: column;
+        width: 250px;
+    }
+
+    .block_feed__button .button-ticket{
+        margin-bottom: 10px;
+    }
+
+    /* subscription */
+
+    .subscription_body__followed_users{
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}

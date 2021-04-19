@@ -1,0 +1,52 @@
+{% extends 'review/snippets/base_snippet.html' %}
+{% block content %}
+    <div class="block_snippet_ticket">
+        <div class='snippet_header'>
+         
+            <span class=snippet_ticket_header__user> 
+                {% if post not in ticket_review %}
+                    {% if post.user != request.user %}
+                        {{post.user}} à
+                    {% else %}
+                        vous avez
+                    {% endif %}
+                    demandé une critique
+                {% else %}
+                    ticket -   
+                    {% if post.user != request.user %}
+                        {{post.user}} 
+                    {% else %}
+                        vous
+                    {% endif %}
+                {% endif %}
+            </span>
+            <span class=snippet_ticket_header__date> 
+                {{post.time_created}}
+            </span>    
+        </div>
+        <div class=snippet_body>
+            <span class=snippet_body__title>{{post.title}}</span>
+            <span class=snippet_body__description>{{post.description}}</span>
+            {% if post.image %}
+                <img class="snippet_body__image" src="{{ post.image }}" alt="{{ post.title }}">
+            {% endif %}
+            <span class=snippet_body__button>
+                {% if post.user == request.user and post_edit == True %}
+                    <a href="{% url 'ticket' id_ticket=post.id %}">
+                        <button type="button" class="btn">Modifier</button>
+                    </a>
+                    <a href="{% url 'delete_ticket' id_ticket=post.id %}">
+                        <button type="button" class="btn">Supprimer</button>
+                    </a>
+                {% endif %}
+                {% if ticket_review is not False %}
+                    {% if post not in ticket_review %}
+                        <a href="{% url 'review' id_ticket=post.id %}">
+                            <button type=button class="btn">Créer une critique</button>
+                        </a>  
+                    {% endif %} 
+                {% endif %}    
+            </span>   
+        </div> 
+    </div> 
+{% endblock %}

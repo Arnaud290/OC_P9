@@ -1,0 +1,54 @@
+{% extends 'review/snippets/base_snippet.html' %}
+{% block content %}
+    <div class="block_snippet_review">
+        <div class='snippet_header'>
+            <span class=snippet_header__user> 
+                {% if post.user != request.user %}
+                    {{post.user}} à 
+                {% else %}
+                    Vous avez 
+                {% endif %}
+                publié une critique
+            </span>
+            <span class=snippet_header__date> 
+                {{post.time_created}}
+            </span>   
+        </div> 
+        <div class='snippet_body'>
+            <span class=snippet_body__headline>
+                {{post.headline}} -
+                <span class=snippet_body__headline__rating_stars>
+                    {% for i in n %}
+                        {% if i >= post.rating  %}
+                            <span class="star">&#9734;</span>
+                        {% else %}
+                            <span class="star">&#9733;</span>
+                        {% endif %}
+                    {% endfor %}
+            </span>         
+
+            </span>
+            <span class=snippet_body__body>
+                {{post.body}}
+            </span>
+            <span class=snippet_body__ticket>
+                {% include 'review/snippets/ticket_snippet.html' with post=post.ticket %}
+            </span>
+            <span class=snippet_body__button>
+                {% if post.user == request.user and  post_edit == True %}
+                    <a href="{% url 'review' id_ticket=post.ticket.id %}">
+                        <button type="button" class="btn">Modifier</button>
+                    </a>
+                        
+                    <a href="{% url 'delete_review' id_review=post.id %}">
+                        <button type="button" class="btn">Supprimer</button>
+                    </a>         
+                {% endif %}
+            </span>       
+    </div>
+ 
+    
+ 
+{% endblock %}
+
+

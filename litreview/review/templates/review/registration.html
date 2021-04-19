@@ -1,0 +1,34 @@
+{% extends 'review/base.html' %}
+{% block title %}
+Inscription
+{% endblock %}
+{% block header_page %}
+    <div class=header_page__registration>
+        <span class=header_page__title>Inscription</span>
+    </div>  
+{% endblock %}
+{% block content %}
+    <div class=registration_block>
+        <p class="registration_block__form title">Inscrivez-vous</p>  
+        <form method="post" action="" class="registration_block__form">
+            {% csrf_token %}
+            <div class="registration_block__form__control">
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div> 
+            <div class="registration_block__form__control">
+                {{ form.password }}
+            </div> 
+            <div class="registration_block__form__control">
+                {{ form.confirm_password }}
+                {{ form.confirm_password.errors }}
+            </div> 
+            <div class="registration_block__form__control__button">
+                <a href="{% url 'userlogin' %}">
+                    <button class="btn" type="button">Retour</button>
+                </a>
+                <button  class="btn" type="submit">S'inscrire</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
