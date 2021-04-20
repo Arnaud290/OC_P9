@@ -1,17 +1,17 @@
 """
 Services for views
 """
-from .models import UserFollows
-from .models import Ticket
-from .models import Review
+from itertools import chain
 from django.db.models import Value, Q
 from django.db.models import CharField
-from itertools import chain
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import models
 from django.shortcuts import get_object_or_404
 from django.db import IntegrityError
+from .models import UserFollows
+from .models import Ticket
+from .models import Review
 from .forms import ReviewForm
 from .forms import TicketForm
 from .forms import LoginForm
@@ -30,8 +30,7 @@ def service_ticket_review(id_ticket=None):
         ticket = Ticket.objects.get(pk=id_ticket)
         if ticket in ticket_review:
             return ticket
-    else:
-        return ticket_review
+    return ticket_review
 
 
 def service_login_registration(request, registration=False):
@@ -176,8 +175,8 @@ def service_subscription(request):
             user_follow = UserFollows.objects.create(
                 user=request.user, followed_user=user_follow)
             user_follow.save()
-        except IntegrityError as e:
-            if 'unique constraint' in e.args:
+        except IntegrityError as error:
+            if 'unique constraint' in error.args:
                 pass
     return form
 

@@ -1,3 +1,7 @@
+"""
+URL address routing module
+for the review application
+"""
 from django.urls import path
 from . import views
 

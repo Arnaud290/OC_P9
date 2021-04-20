@@ -1,4 +1,8 @@
-from django.shortcuts import render, redirect
+"""
+module for managing views
+"""
+from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib.auth import logout
 from .forms import LoginForm
 from .forms import RegistrationForm
@@ -19,10 +23,17 @@ from .services import service_save_review
 
 
 def index(request):
+    """
+    Function that refers to the login
+    view for access to the index page
+    """
     return redirect('userlogin')
 
 
 def userlogin(request):
+    """
+    Function of the login page view
+    """
     if request.user.is_authenticated:
         return redirect('feed')
     if request.method == 'POST':
@@ -37,11 +48,17 @@ def userlogin(request):
 
 
 def userlogout(request):
+    """
+    User logout function
+    """
     logout(request)
     return redirect('userlogin')
 
 
 def registration(request):
+    """
+    Add users function for the registration page
+    """
     if request.method == 'POST':
         form = service_login_registration(
             request, registration=True)
@@ -55,6 +72,9 @@ def registration(request):
 
 
 def feed(request):
+    """
+    Post management function for the feed page
+    """
     if request.user.is_authenticated:
         context = {
             'posts': service_posts(request, followers=True),
@@ -63,11 +83,14 @@ def feed(request):
         return render(
             request, "review/feed.html",
             context)
-    else:
-        return redirect('userlogin')
+    return redirect('userlogin')
 
 
 def ticket(request, id_ticket=None):
+    """
+    Ticket creation or modification management
+    function for the tickets page
+    """
     if request.user.is_authenticated:
         instance_ticket = service_get_instance(
             request, Ticket, id_ticket)
@@ -79,27 +102,30 @@ def ticket(request, id_ticket=None):
             if ticket_form.is_valid():
                 if id_ticket is not None:
                     return redirect('posts')
-                else:
-                    return redirect('feed')
-            else:
-                error = 'Lien URL non valide'
+                return redirect('feed')
+            error = 'Lien URL non valide'
         else:
             error = False
             ticket_form = TicketForm(instance=instance_ticket)
         return render(
             request, "review/ticket.html",
             {'ticket_form': ticket_form, 'error': error})
-    else:
-        return redirect('userlogin')
+    return redirect('userlogin')
 
 
 def delete_ticket(request, id_ticket):
+    """
+    Ticket deletion function
+    """
     if request.user.is_authenticated:
         service_delete(request, Ticket, id_ticket)
-        return redirect(request.META.get('HTTP_REFERER'))
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 def subscription(request):
+    """
+    Management function of the followed users page
+    """
     if request.user.is_authenticated:
         if request.method == 'POST':
             form = service_subscription(request)
@@ -112,17 +138,22 @@ def subscription(request):
         return render(
             request, "review/subscription.html",
             context)
-    else:
-        return redirect('userlogin')
+    return redirect('userlogin')
 
 
 def unsubscribe_user(request, id_user):
+    """
+    User unsubscribe function
+    """
     if request.user.is_authenticated:
         service_unsubscribe_user(request, id_user)
-        return redirect('subscription')
+    return redirect('subscription')
 
 
 def review(request, id_ticket=None):
+    """
+    Review page management function
+    """
     if request.user.is_authenticated:
         instance_ticket = service_get_instance(
             request, Ticket, id_ticket,
@@ -142,18 +173,15 @@ def review(request, id_ticket=None):
                     instance_review=instance_review)
                 if instance_review is None:
                     return redirect('feed')
-                else:
-                    return redirect('posts')
-            else:
-                ticket_form = service_save_ticket(
-                    request,
-                    instance_ticket=instance_ticket,
-                    instance_review=instance_review,
-                    review=True)
-                if ticket_form.is_valid():
-                    return redirect('feed')
-                else:
-                    error = 'Lien URL non valide'
+                return redirect('posts')
+            ticket_form = service_save_ticket(
+                request,
+                instance_ticket=instance_ticket,
+                instance_review=instance_review,
+                review=True)
+            if ticket_form.is_valid():
+                return redirect('feed')
+            error = 'Lien URL non valide'
         else:
             error = False
         context = {
@@ -162,24 +190,26 @@ def review(request, id_ticket=None):
             'error': error}
         return render(
             request, "review/review.html", context)
-    else:
-        return redirect('userlogin')
+    return redirect('userlogin')
 
 
 def delete_review(request, id_review):
+    """
+    Fonction to delete a review
+    """
     if request.user.is_authenticated:
         service_delete(
             request, Review, id_review)
-        return redirect(request.META.get('HTTP_REFERER'))
-    else:
-        pass
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 def posts(request):
+    """
+    Management function of the posts page
+    """
     if request.user.is_authenticated:
         context = {'posts': service_posts(request), 'n': range(5)}
         return render(
             request, "review/posts.html",
             context)
-    else:
-        return redirect('userlogin')
+    return redirect('userlogin')

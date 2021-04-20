@@ -182,7 +182,7 @@ a{
 
 .registration_block__form__form{
     height:30px;
-    width: 400px;
+    width: 500px;
     text-align: center;
     margin-top: 10px;
     border-radius: 10px;
@@ -483,6 +483,7 @@ a{
     width: 210px;
 	height: 300px;
     border: 1px solid black;
+    margin-left: 20px;
 }
 
 /* snippets review */
