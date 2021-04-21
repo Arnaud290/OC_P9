@@ -4,15 +4,19 @@ Forms management module
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-from .models import Ticket
-from .models import Review
-from .forms_settings import PASSWORD_MIN_LENGTH
-from .forms_settings import PASSWORD_MAX_LENGTH
-from .forms_settings import ERRORS_LOGIN_FORM
-from .forms_settings import ERRORS_REGISTRATION_FORM
-from .forms_settings import ERRORS_SUBSCRIPTION_FORM
-from .forms_settings import SPECIAL_SYMBOL
-from .forms_settings import CHOICES_REVIEW_FORM
+from .models import (
+    Ticket,
+    Review
+)
+from .forms_settings import (
+    PASSWORD_MIN_LENGTH,
+    PASSWORD_MAX_LENGTH,
+    ERRORS_LOGIN_FORM,
+    ERRORS_REGISTRATION_FORM,
+    ERRORS_SUBSCRIPTION_FORM,
+    SPECIAL_SYMBOL,
+    CHOICES_REVIEW_FORM
+)
 
 
 class LoginForm(forms.Form):
@@ -21,14 +25,24 @@ class LoginForm(forms.Form):
     """
     username = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={
-            'class': "login_block__form__form",
-            'placeholder': "Nom d'utilisateur"}), required=True)
+        widget=forms.TextInput(
+            attrs={
+                'class': "login_block__form__form",
+                'placeholder': "Nom d'utilisateur"
+            }
+        ),
+        required=True
+    )
     password = forms.CharField(
         max_length=100,
-        widget=forms.PasswordInput(attrs={
-            'class': "login_block__form__form",
-            'placeholder': "Mot de passe"}), required=True)
+        widget=forms.PasswordInput(
+            attrs={
+                'class': "login_block__form__form",
+                'placeholder': "Mot de passe"
+            }
+        ),
+        required=True
+    )
 
     def clean_password(self):
         """
@@ -51,21 +65,33 @@ class RegistrationForm(forms.Form):
     """
     Class of the registration form
     """
-    username = forms.CharField(widget=forms.TextInput(
-        attrs={
-            'class': 'registration_block__form__form',
-            'placeholder': "Nom d'utilisateur"}),
-        required=True, max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'class': 'registration_block__form__form',
-            'placeholder': "Mot de passe"}),
-        required=True, max_length=100)
-    confirm_password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'class': 'registration_block__form__form',
-            'placeholder': "Confirmer mot de passe"}),
-        required=True, max_length=100)
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'class': 'registration_block__form__form',
+                'placeholder': "Nom d'utilisateur"
+            }
+        ),
+        required=True, max_length=100
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'registration_block__form__form',
+                'placeholder': "Mot de passe"
+            }
+        ),
+        required=True, max_length=100
+    )
+    confirm_password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'registration_block__form__form',
+                'placeholder': "Confirmer mot de passe"
+            }
+        ),
+        required=True, max_length=100
+    )
 
     def clean_username(self):
         """
@@ -116,13 +142,26 @@ class TicketForm(forms.ModelForm):
         model = Ticket
         fields = ['title', 'description', 'image']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'ticket_body__form__form'}),
-            'description': forms.Textarea(attrs={'class': 'ticket_body__form__form'}),
-            'image': forms.TextInput(attrs={
-                'class': 'ticket_body__form__form',
-                'placeholder': "facultatif, lien URL uniquement."
-            })
+            'title': forms.TextInput(
+                attrs={
+                    'class': 'ticket_body__form__form'
+                }
+            ),
+            'description': forms.Textarea(
+                attrs={
+                    'class': 'ticket_body__form__form'
+                }
+            ),
+            'image': forms.TextInput(
+                attrs={
+                    'class': 'ticket_body__form__form',
+                    'placeholder': "facultatif, lien URL uniquement."
+                }
+            )
         }
+
+        def clean(self):
+            super(self).clean()
 
 
 class ReviewForm(forms.ModelForm):
@@ -136,11 +175,22 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = ['headline', 'body', 'rating']
         widgets = {
-            'headline': forms.TextInput(attrs={'class': 'review_body__form__form'}),
-            'body': forms.Textarea(attrs={'class': 'review_body__form__form'}),
+            'headline': forms.TextInput(
+                attrs={
+                    'class': 'review_body__form__form'
+                }
+            ),
+            'body': forms.Textarea(
+                attrs={
+                    'class': 'review_body__form__form'
+                }
+            ),
             'rating': forms.RadioSelect(
                 choices=CHOICES_REVIEW_FORM,
-                attrs={'class': 'review_body__form__form_radio'})
+                attrs={
+                    'class': 'review_body__form__form_radio'
+                }
+            )
         }
 
 
@@ -153,7 +203,11 @@ class SubsriptionForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'subscription_body__form__form',
-                'placeholder': "Entrer le nom d'un utilisateur"}), required=True)
+                'placeholder': "Entrer le nom d'un utilisateur"
+            }
+        ),
+        required=True
+    )
 
     def clean_username(self):
         """

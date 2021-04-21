@@ -9,11 +9,13 @@ PASSWORD_MAX_LENGTH = 40
 SPECIAL_SYMBOL = [
     '&', '~', '"', '{', '(', '[', '-', ';', '|',
     '_', ')', '°', ']', '=', '}', '$', '#', 'ù',
-    '¨', 'µ', '£', '@']
+    '¨', 'µ', '£', '@'
+]
 
 ERRORS_LOGIN_FORM = [
     "Cet utilisateur n'existe pas",
-    "Mot de passe incorrect"]
+    "Mot de passe incorrect"
+]
 
 ERRORS_REGISTRATION_FORM = [
     "Utilisateur déja existant",
@@ -24,10 +26,13 @@ ERRORS_REGISTRATION_FORM = [
     "Le mot de passe doit contenir au moins un chiffre",
     "Le mot de passe doit contenir au moins une lettre majuscule",
     "Le mot de passe doit contenir au moins une lettre minuscule",
-    "Le mot de passe doit avoir au moins un des symboles $ @ # ..."]
+    "Le mot de passe doit avoir au moins un des symboles $ @ # ..."
+]
 
 ERRORS_SUBSCRIPTION_FORM = [
-    "L'utilisateur n'existe pas"]
+    "L'utilisateur n'existe pas"
+]
+
 
 CHOICES_REVIEW_FORM = [
     ('0', 0), (' 1', 1), (' 2', 2), (' 3', 3), (' 4', 4), (' 5', 5)

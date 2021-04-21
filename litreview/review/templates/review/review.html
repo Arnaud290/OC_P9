@@ -23,9 +23,7 @@ review
                 {{ ticket_form.description }}
                 <p class="review_body__form__title">Image</p>
                 {{ ticket_form.image }}
-                {% if error %}
-                    <p class="error">{{ error }}</p>
-                {% endif %}
+                {{ ticket_form.image.errors }}
         {% endif %}
             <p class="review_body__title">Critique</p>
             {% csrf_token %}

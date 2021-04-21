@@ -174,13 +174,15 @@ a{
 }
 
 .registration_block__form{
-    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .registration_block__form__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height:30px;
     width: 500px;
     text-align: center;
@@ -189,21 +191,26 @@ a{
     font-size: 1em;
 }
 
+.registration_block__form__password_indication li{
+    font-size: 1em;
+    list-style-type: circle;
+}
+
 .registration_block__form__control.validate{
     margin-top: 10px; 
 }
 
 .registration_block__form__control__button{
     display: flex;
+    justify-content: space-between;
     margin-top: 30px;
-    justify-content: flex-end;
+    align-items: center;
 }
 
 .registration_block__form__control__button .btn{
     height:30px;
-    width: 170px;
+    width: 150px;
     font-size: 1em;
-    margin-left: 10px;
 }
 
 /* Feed */
@@ -214,15 +221,14 @@ a{
 }
 
 .header_page__title__feed__button{
-    width: 450px;
     margin-top: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .header_page__title__feed__button .btn{
     height:30px;
-    width: 200px;
+    width: 450px;
     font-size: 1em;
 }
 

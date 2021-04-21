@@ -21,9 +21,7 @@
                 {{ ticket_form.description }}
                 <p class="ticket_body__form__title">Image</p>
                 {{ ticket_form.image }}
-                {% if error %}
-                    <p class="error">{{ error }}</p>
-                {% endif %}
+                {{ ticket_form.image.errors }}
                 <div class="ticket_body__form__validate">
                     <button type="submit" class="btn">Envoyer</button>
                 </div>

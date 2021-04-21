@@ -23,6 +23,13 @@
                 {{ form.confirm_password }}
                 {{ form.confirm_password.errors }}
             </div> 
+            <ul class=registration_block__form__password_indication>
+                <li> doit contenir au minimum 8 caractères</li>
+                <li> doit contenir au maximum 40 caractères</li>
+                <li> doit contenir au minimum une majuscule</li>
+                <li> doit contenir au minimum une minuscule</li>   
+                <li> doit contenir au moins un caractère spécial</li>
+            </ul>
             <div class="registration_block__form__control__button">
                 <a href="{% url 'userlogin' %}">
                     <button class="btn" type="button">Retour</button>
