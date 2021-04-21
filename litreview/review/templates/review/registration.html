@@ -10,7 +10,7 @@
 {% block content %}
     <div class="registration_block">
         <p class="registration_block__form title">Inscrivez-vous</p>  
-        <form method="post" action="" class="registration_block__form">
+        <form method="post" action="/registration/" class="registration_block__form">
             {% csrf_token %}
             <div class="registration_block__form__control">
                 {{ form.username }}
@@ -30,12 +30,13 @@
                 <li> doit contenir au minimum une minuscule</li>   
                 <li> doit contenir au moins un caractère spécial</li>
             </ul>
+            
             <div class="registration_block__form__control__button">
-                <a href="{% url 'userlogin' %}">
-                    <button class="btn" type="button">Retour</button>
-                </a>
                 <button  class="btn" type="submit">S'inscrire</button>
             </div>
+        </form>
+        <form class="registration_block__return" action="/login/" method="get">
+            <button class="btn">retour</button>
         </form>
     </div>
 {% endblock %}

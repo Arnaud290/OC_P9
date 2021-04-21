@@ -6,12 +6,12 @@
     <div class="header_page__feed">
         <span class="header_page__title">Flux</span>
         <div class="header_page__title__feed__button">
-            <a href="{% url 'ticket' %}">
-                <button type="button " class="btn">Créer un ticket</button>
-            </a>
-            <a href="{% url 'review' %}">
-                <button type="button" class="btn">Créer une critique</button>
-            </a>
+            <form action="/ticket/" method="get">
+                <button class="btn">Créer un ticket</button>
+            </form>
+            <form action="/review/" method="get">
+                <button class="btn">Créer une critique</button>
+            </form>
         </div> 
     </div>    
 {% endblock %}

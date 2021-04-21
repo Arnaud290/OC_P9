@@ -11,11 +11,11 @@
     <div class="login_block">
         <div class="login_block__registration">
             <p class="login_block__form title">Inscrivez-vous maintenant</p> 
-            <a href="{% url 'registration' %}">
-                <button class="btn" type="button">s'inscrire</button>
-            </a>
+            <form class="btn" action="/registration/" method="get">
+                <button class="btn">s'inscrire</button>
+            </form>
         </div> 
-        <form method="post" action="" class="login_block__form">
+        <form method="post" action="/login/" class="login_block__form">
             <p class="login_block__form title">Connectez-vous</p>
                 {% csrf_token %}
                 <div class="login_block__form__control">
